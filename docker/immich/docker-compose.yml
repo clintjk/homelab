@@ -26,6 +26,10 @@ services:
       - redis
       - database
     restart: always
+    logging:
+      driver: "journald"
+      options:
+        tag: "immich-server"
 
   immich-microservices:
     container_name: immich_microservices
