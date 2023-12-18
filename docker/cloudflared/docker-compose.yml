@@ -5,5 +5,5 @@ services:
     container_name: cloudflare-tunnel 
     restart: unless-stopped 
     command: tunnel run --token ${TOKEN}
-    env-file:
+    env_file:
       - stack.env
