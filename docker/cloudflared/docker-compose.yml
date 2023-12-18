@@ -4,6 +4,6 @@ services:
     image: cloudflare/cloudflared 
     container_name: cloudflare-tunnel 
     restart: unless-stopped 
-    command: tunnel run --token ${TOKEN}
+    command: tunnel run --protocol http2 --token ${TOKEN}
     env_file:
       - stack.env
