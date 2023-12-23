@@ -16,6 +16,8 @@ services:
     ports:
       - 8096:8096
     restart: unless-stopped
+    devices:
+      - /dev/dri:/dev/dri
     env_file:
       - stack.env
 
