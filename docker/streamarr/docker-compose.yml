@@ -1,7 +1,9 @@
----
 version: "2.1"
+
 name: streamarr
+
 services:
+  
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
@@ -12,7 +14,7 @@ services:
       - TZ=Europe/London
       - JELLYFIN_PublishedServerUrl=${LOCAL_SERVER_IP}:8096 #optional
     volumes:
-      - ./jellyfin:/config
+      - ${LOCATION}/jellyfin:/config
       - ${LOCATION}/data:/data
     ports:
       - 8096:8096
@@ -31,7 +33,7 @@ services:
       - UMASK=002
       - TZ=Europe/London
     volumes:
-      - ./radarr:/config
+      - ${LOCATION}/radarr:/config
       - ${LOCATION}/data/media/movies:/data
     ports:
       - 7878:7878
@@ -48,7 +50,7 @@ services:
       - UMASK=002
       - TZ=Europe/London
     volumes:
-      - ./sonarr:/config
+      - ${LOCATION}/sonarr:/config
       - ${LOCATION}/data/media/series:/data
     ports:
       - 8989:8989
@@ -65,7 +67,7 @@ services:
       - UMASK=002
       - TZ=Europe/London
     volumes:
-      - ./prowlarr:/config
+      - ${LOCATION}/prowlarr:/config
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -80,7 +82,7 @@ services:
       - TZ=Europe/London
       - WEBUI_PORT=8080
     volumes:
-      - ./qbittorrent:/config
+      - ${LOCATION}/qbittorrent:/config
       - ${LOCATION}/data/torrents:/data/torrents
     ports:
       - 8080:8080
@@ -102,7 +104,7 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - ./jellyseer:/app/config
+      - ${LOCATION}/jellyseer:/app/config
     restart: unless-stopped
     
   flaresolverr:
