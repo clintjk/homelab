@@ -22,7 +22,7 @@ services:
     devices:
       - /dev/dri:/dev/dri
     env_file:
-      - stack.env
+      - .env
 
   radarr:
     image: lscr.io/linuxserver/radarr:latest
@@ -39,7 +39,7 @@ services:
       - 7878:7878
     restart: unless-stopped
     env_file:
-      - stack.env
+      - .env
 
   sonarr:
     image: lscr.io/linuxserver/sonarr:latest
@@ -56,7 +56,7 @@ services:
       - 8989:8989
     restart: unless-stopped
     env_file:
-      - stack.env
+      - .env
       
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
@@ -90,7 +90,7 @@ services:
       - 6881:6881/udp
     restart: unless-stopped
     env_file:
-      - stack.env
+      - .env
       
   jellyseerr:
     image: fallenbagel/jellyseerr:latest
