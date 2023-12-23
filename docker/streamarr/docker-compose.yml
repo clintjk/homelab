@@ -14,7 +14,7 @@ services:
       - TZ=Europe/London
       - JELLYFIN_PublishedServerUrl=${LOCAL_SERVER_IP}:8096 #optional
     volumes:
-      - ${LOCATION}/jellyfin:/config
+      - ./jellyfin:/config
       - ${LOCATION}/data:/data
     ports:
       - 8096:8096
@@ -33,7 +33,7 @@ services:
       - UMASK=002
       - TZ=Europe/London
     volumes:
-      - ${LOCATION}/radarr:/config
+      - ./radarr:/config
       - ${LOCATION}/data/media/movies:/data
     ports:
       - 7878:7878
@@ -50,7 +50,7 @@ services:
       - UMASK=002
       - TZ=Europe/London
     volumes:
-      - ${LOCATION}/sonarr:/config
+      - ./sonarr:/config
       - ${LOCATION}/data/media/series:/data
     ports:
       - 8989:8989
@@ -67,7 +67,7 @@ services:
       - UMASK=002
       - TZ=Europe/London
     volumes:
-      - ${LOCATION}/prowlarr:/config
+      - ./prowlarr:/config
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -82,7 +82,7 @@ services:
       - TZ=Europe/London
       - WEBUI_PORT=8080
     volumes:
-      - ${LOCATION}/qbittorrent:/config
+      - ./qbittorrent:/config
       - ${LOCATION}/data/torrents:/data/torrents
     ports:
       - 8080:8080
@@ -104,7 +104,7 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - ${LOCATION}/jellyseer:/app/config
+      - ./jellyseer:/app/config
     restart: unless-stopped
     
   flaresolverr:
