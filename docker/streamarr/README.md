@@ -9,7 +9,8 @@ Contains:
  - Prowlarr
  - qbittorrent
 ## Notes
-Refer to https://trash-guides.info/Hardlinks/How-to-setup-for/Docker/
+Refer to https://trash-guides.info/Hardlinks/How-to-setup-for/Docker/  
+  
 Make sure to set permissions to the data folder:
 ````
 sudo chown -R $USER:$USER /data
