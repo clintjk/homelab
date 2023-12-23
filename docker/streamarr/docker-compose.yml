@@ -30,7 +30,7 @@ services:
       - TZ=Europe/London
     volumes:
       - ./radarr:/config
-      - ${LOCATION}/data:/data
+      - ${LOCATION}/data/media/movies:/data
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -46,7 +46,7 @@ services:
       - TZ=Europe/London
     volumes:
       - ./sonarr:/config
-      - ${LOCATION}/data:/data
+      - ${LOCATION}/data/media/series:/data
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -75,7 +75,7 @@ services:
       - TZ=Europe/London
       - WEBUI_PORT=8080
     volumes:
-      - /qbittorrent:/config
+      - ./qbittorrent:/config
       - ${LOCATION}/data/torrents:/data/torrents
     ports:
       - 8080:8080
@@ -98,3 +98,15 @@ services:
     volumes:
       - ./jellyseer:/app/config
     restart: unless-stopped
+    
+  flaresolverr:
+    image: flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=Europe/London
+    ports:
+      - "${PORT:-8191}:8191"
+    restart: unless-stopped 
